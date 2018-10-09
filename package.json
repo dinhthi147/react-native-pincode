@@ -1,6 +1,6 @@
 {
   "name": "@dinhthi147/react-native-pincode",
-  "version": "1.6.7",
+  "version": "1.6.8",
   "description": "React native PIN code component",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
