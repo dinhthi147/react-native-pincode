@@ -58,6 +58,7 @@ export type IProps = {
   pinCodeVisible?: boolean
   textPasswordVisibleSize?: number
   textPasswordVisibleFamily?: string
+  onFail?: any
 }
 
 export type IState = {
@@ -89,7 +90,12 @@ class PinCodeChoose extends React.PureComponent<IProps, IState> {
       }
       if (this.props.finishProcess) this.props.finishProcess()
     } else {
-      this.setState({ status: PinStatus.choose })
+      if (this.props.onFail) {
+        this.props.onFail()
+      }
+      else {
+        this.setState({ status: PinStatus.choose })
+      }
     }
   }
 
