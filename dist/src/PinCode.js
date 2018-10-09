@@ -55,7 +55,7 @@ class PinCode extends React.PureComponent {
                     case PinStatus.confirm:
                         if (currentPassword !== this.props.previousPin) {
                             if (this.props.onFail) {
-                                this.props.onFail()
+                                this.props.onFail();
                             }
                             this.showConfirmError();
                         }
@@ -302,7 +302,7 @@ class PinCode extends React.PureComponent {
         await delay_1.default(duration);
         this.setState({ moveData: { x: -length / 4, y: 0 } });
         await delay_1.default(duration);
-        this.setState({ moveData: { x: 0, y: 0 } });
+        this.setState({ moveData: { x: 0, y: 0 }, password: '' });
         if (this.props.getCurrentLength)
             this.props.getCurrentLength(0);
     }
@@ -314,7 +314,7 @@ class PinCode extends React.PureComponent {
         await delay_1.default(3000);
         this.setState({ changeScreen: true });
         await delay_1.default(200);
-        this.setState({ showError: false, password: '' });
+        this.setState({ showError: false });
         await delay_1.default(200);
         this.props.endProcess(this.state.password);
     }
@@ -324,8 +324,6 @@ class PinCode extends React.PureComponent {
         this.setState({ showError: true, changeScreen: false });
         this.doShake();
         await delay_1.default(3000);
-        // this.setState({ changeScreen: true });
-        // await delay_1.default(200);
         this.setState({ showError: false });
         await delay_1.default(200);
         this.props.endProcess(this.state.password);

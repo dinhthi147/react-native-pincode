@@ -90,12 +90,7 @@ class PinCodeChoose extends React.PureComponent<IProps, IState> {
       }
       if (this.props.finishProcess) this.props.finishProcess()
     } else {
-      if (this.props.onFail) {
-        this.props.onFail()
-      }
-      else {
-        this.setState({ status: PinStatus.choose })
-      }
+      this.setState({ status: PinStatus.confirm });
     }
   }
 
@@ -232,6 +227,7 @@ class PinCodeChoose extends React.PureComponent<IProps, IState> {
             pinCodeVisible={this.props.pinCodeVisible}
             textPasswordVisibleFamily={this.props.textPasswordVisibleFamily}
             textPasswordVisibleSize={this.props.textPasswordVisibleSize}
+            onFail={this.props.onFail || null}
           />
         )}
       </View>

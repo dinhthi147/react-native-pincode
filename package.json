@@ -1,6 +1,6 @@
 {
   "name": "@dinhthi147/react-native-pincode",
-  "version": "1.6.5",
+  "version": "1.6.7",
   "description": "React native PIN code component",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -17,10 +17,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Haskkor/react-native-pincode.git"
+    "url": "git+https://github.com/dinhthi147/react-native-pincode.git"
   },
-  "author": "Jeremy Farnault",
-  "license": "MIT",
+  "author": "Nguyen Dinh Thi",
+  "license": "",
   "bugs": {
     "url": "https://github.com/Haskkor/react-native-pincode/issues"
   },

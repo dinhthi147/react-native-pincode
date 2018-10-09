@@ -222,6 +222,7 @@ class PINCode extends React.PureComponent<IProps, IState> {
           pinCodeVisible={this.props.pinCodeVisible}
           textPasswordVisibleSize={this.props.textPasswordVisibleSize}
           textPasswordVisibleFamily={this.props.textPasswordVisibleFamily}
+          onFail={this.props.onFail || null}
         />}
         {status === PinStatus.enter &&
         <PinCodeEnter

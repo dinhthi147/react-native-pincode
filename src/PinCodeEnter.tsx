@@ -142,21 +142,21 @@ class PinCodeEnter extends React.PureComponent<IProps, IState> {
       if (this.props.onFail) {
         this.props.onFail(pinAttempts)
       }
-      if (+pinAttempts >= this.props.maxAttempts) {
-        await AsyncStorage.setItem(
-          this.props.timePinLockedAsyncStorageName,
-          new Date().toISOString()
-        )
-        this.setState({ locked: true, pinCodeStatus: PinResultStatus.locked })
-        this.props.changeInternalStatus(PinResultStatus.locked)
-      } else {
+      // if (+pinAttempts >= this.props.maxAttempts) {
+      //   await AsyncStorage.setItem(
+      //     this.props.timePinLockedAsyncStorageName,
+      //     new Date().toISOString()
+      //   )
+      //   this.setState({ locked: true, pinCodeStatus: PinResultStatus.locked })
+      //   this.props.changeInternalStatus(PinResultStatus.locked)
+      // } else {
         await AsyncStorage.setItem(
           this.props.pinAttemptsAsyncStorageName,
           pinAttempts.toString()
         )
         this.setState({ pinCodeStatus: PinResultStatus.failure })
         this.props.changeInternalStatus(PinResultStatus.failure)
-      }
+      // }
     }
   }
 
