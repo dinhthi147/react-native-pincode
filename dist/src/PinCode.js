@@ -54,7 +54,10 @@ class PinCode extends React.PureComponent {
                         break;
                     case PinStatus.confirm:
                         if (currentPassword !== this.props.previousPin) {
-                            this.showError();
+                            if (this.props.onFail) {
+                                this.props.onFail()
+                            }
+                            this.showConfirmError();
                         }
                         else {
                             this.endProcess(currentPassword);
@@ -315,6 +318,18 @@ class PinCode extends React.PureComponent {
         await delay_1.default(200);
         this.props.endProcess(this.state.password);
     }
+    async showConfirmError() {
+        this.setState({ changeScreen: true });
+        await delay_1.default(300);
+        this.setState({ showError: true, changeScreen: false });
+        this.doShake();
+        await delay_1.default(3000);
+        // this.setState({ changeScreen: true });
+        // await delay_1.default(200);
+        this.setState({ showError: false });
+        await delay_1.default(200);
+        this.props.endProcess(this.state.password);
+    }
     render() {
         const { password, showError, attemptFailed, changeScreen } = this.state;
         return (React.createElement(react_native_1.View, { style: this.props.styleContainer
@@ -491,8 +506,10 @@ let styles = react_native_1.StyleSheet.create({
         justifyContent: 'center',
         width: grid_1.grid.unit * 4,
         height: grid_1.grid.unit * 4,
-        backgroundColor: 'rgb(242, 245, 251)',
-        borderRadius: grid_1.grid.unit * 2
+        backgroundColor: 'transparent',
+        borderRadius: grid_1.grid.unit * 2,
+        borderColor: 'rgb(0, 128, 0)',
+        borderWidth: 1
     },
     textTitle: {
         fontSize: 20,
