@@ -88,8 +88,11 @@ export declare type IProps = {
     titleConfirm?: string;
     titleConfirmFailed?: string;
     titleEnter?: string;
+    titleValidationFailed?: string;
     touchIDDisabled?: boolean;
     touchIDSentence?: string;
+    validationRegex?: RegExp;
+    titleLogin?: string;
 };
 export declare type IState = {
     internalPinStatus: PinResultStatus;

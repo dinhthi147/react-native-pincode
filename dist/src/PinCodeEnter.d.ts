@@ -64,6 +64,7 @@ export declare type IProps = {
     pinCodeVisible?: boolean;
     textPasswordVisibleSize?: number;
     textPasswordVisibleFamily?: string;
+    titleLogin?: string;
 };
 export declare type IState = {
     pinCodeStatus: PinResultStatus;

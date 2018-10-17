@@ -93,8 +93,11 @@ export type IProps = {
   titleConfirm?: string
   titleConfirmFailed?: string
   titleEnter?: string
+  titleValidationFailed?: string
   touchIDDisabled?: boolean
   touchIDSentence?: string
+  validationRegex?: RegExp
+  titleLogin?: string
 }
 
 export type IState = {
@@ -223,6 +226,8 @@ class PINCode extends React.PureComponent<IProps, IState> {
           textPasswordVisibleSize={this.props.textPasswordVisibleSize}
           textPasswordVisibleFamily={this.props.textPasswordVisibleFamily}
           onFail={this.props.onFail || null}
+          titleValidationFailed={this.props.titleValidationFailed}
+          validationRegex={this.props.validationRegex}
         />}
         {status === PinStatus.enter &&
         <PinCodeEnter
@@ -283,6 +288,7 @@ class PINCode extends React.PureComponent<IProps, IState> {
           pinCodeVisible={this.props.pinCodeVisible}
           textPasswordVisibleSize={this.props.textPasswordVisibleSize}
           textPasswordVisibleFamily={this.props.textPasswordVisibleFamily}
+          titleLogin={this.props.titleLogin || ''}
         />}
         {(pinStatus === PinResultStatus.locked ||
           this.state.internalPinStatus === PinResultStatus.locked ||

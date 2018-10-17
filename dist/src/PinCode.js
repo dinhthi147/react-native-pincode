@@ -50,7 +50,13 @@ class PinCode extends React.PureComponent {
             if (currentPassword.length === this.props.passwordLength) {
                 switch (this.props.status) {
                     case PinStatus.choose:
-                        this.endProcess(currentPassword);
+                        if (this.props.validationRegex &&
+                            this.props.validationRegex.test(currentPassword)) {
+                            this.showError(true);
+                        }
+                        else {
+                            this.endProcess(currentPassword);
+                        }
                         break;
                     case PinStatus.confirm:
                         if (currentPassword !== this.props.previousPin) {
@@ -234,6 +240,7 @@ class PinCode extends React.PureComponent {
                     { color: colorTitle, opacity: opacityTitle }
                 ] }, (attemptFailed && this.props.titleAttemptFailed) ||
                 (showError && this.props.titleConfirmFailed) ||
+                (showError && this.props.titleValidationFailed) ||
                 this.props.sentenceTitle));
         };
         this.renderSubtitle = (colorTitle, opacityTitle, attemptFailed, showError) => {
@@ -306,7 +313,7 @@ class PinCode extends React.PureComponent {
         if (this.props.getCurrentLength)
             this.props.getCurrentLength(0);
     }
-    async showError() {
+    async showError(isErrorValidation = false) {
         this.setState({ changeScreen: true });
         await delay_1.default(300);
         this.setState({ showError: true, changeScreen: false });
@@ -316,7 +323,9 @@ class PinCode extends React.PureComponent {
         await delay_1.default(200);
         this.setState({ showError: false });
         await delay_1.default(200);
-        this.props.endProcess(this.state.password);
+        this.props.endProcess(this.state.password, isErrorValidation);
+        if (isErrorValidation)
+            this.setState({ changeScreen: false });
     }
     async showConfirmError() {
         this.setState({ changeScreen: true });
@@ -393,6 +402,10 @@ class PinCode extends React.PureComponent {
             React.createElement(react_native_1.View, { style: styles.flexCirclePassword }, this.props.passwordComponent
                 ? this.props.passwordComponent()
                 : this.renderCirclePassword()),
+            this.props.status === PinStatus.enter &&
+                this.props.titleLogin !== '' &&
+                React.createElement(react_native_1.View, { style: {} },
+                    React.createElement(react_native_1.Text, { style: styles.textTitleLogin }, this.props.titleLogin)),
             React.createElement(react_native_easy_grid_1.Grid, { style: styles.grid },
                 React.createElement(react_native_easy_grid_1.Row, { style: this.props.styleRowButtons
                         ? this.props.styleRowButtons
@@ -541,5 +554,12 @@ let styles = react_native_1.StyleSheet.create({
     grid: {
         maxWidth: grid_1.grid.unit * 16.25,
         flex: 7
+    },
+    textTitleLogin: {
+        fontSize: 16,
+        textDecorationLine: 'underline',
+        paddingBottom: 20,
+        color: 'orange',
+        lineHeight: 19
     }
 });

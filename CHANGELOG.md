@@ -5,6 +5,21 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 
+## [1.7.1] - 2018-10-13
+### Updated
+- Updated react-native-touch-id version to 4.1.0 to get the localization fix. Related issue: [Issue 24](https://github.com/fnzc/react-native-pincode/issues/24).
+
+
+## [1.7.0] - 2018-10-10
+### Added
+- Added `validationRegex` and `titleValidationFailed` properties to check the PIN code entered by the user against a provided RegExp. Related issue: [Issue 32](https://github.com/fnzc/react-native-pincode/issues/32).
+
+
+## [1.6.6] - 2018-10-04
+### Added
+- Added `pinCodeVisible`, `textPasswordVisibleFamily` and `textPasswordVisibleSize` properties to allow the user to see the PIN code they're entering. Related issue: [Issue 37](https://github.com/fnzc/react-native-pincode/issues/37).
+
+
 ## [1.6.5] - 2018-09-26
 ### Fixed
 - Fixed an issue with the pin code not component not resetting after a lock. Fix provided by [marla-singer](https://github.com/marla-singer). Related issue: [Issue 38](https://github.com/fnzc/react-native-pincode/issues/38).
@@ -18,8 +33,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [1.6.3] - 2018-09-05
 ### Fixed
 - Buttons layout broken.
+
 ### Added
 - Added `stylePinCodeHiddenPasswordSizeEmpty` and `stylePinCodeHiddenPasswordSizeFull` properties. Related issue: [Issue 29](https://github.com/fnzc/react-native-pincode/issues/29).
+
 ### Merged
 - Merged [Dimon70007](https://github.com/Dimon70007) pull request fixing the align center for the icon in the delete button.
 
@@ -68,7 +85,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Added
 - License file
 
-### Update
+### Updated
 - Readme
 
 ### Merged

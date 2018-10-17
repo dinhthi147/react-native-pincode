@@ -74,6 +74,7 @@ export type IProps = {
   pinCodeVisible?: boolean
   textPasswordVisibleSize?: number
   textPasswordVisibleFamily?: string
+  titleLogin?: string
 }
 
 export type IState = {
@@ -241,6 +242,7 @@ class PinCodeEnter extends React.PureComponent<IProps, IState> {
           pinCodeVisible={this.props.pinCodeVisible}
           textPasswordVisibleFamily={this.props.textPasswordVisibleFamily}
           textPasswordVisibleSize={this.props.textPasswordVisibleSize}
+          titleLogin={this.props.titleLogin}
         />
       </View>
     )
